@@ -2,13 +2,13 @@
 FROM node:16
 
 # Install pnpm
-RUN npm install -g pnpm && npm install -g vite
+RUN npm install -g pnpm
 
 # Set the working directory
 WORKDIR /usr/src/app
 
 # Copy the package files
-COPY package.json pnpm-lock.yaml ./
+COPY package.json ./
 
 # Install dependencies, including Vite globally
 RUN pnpm install 
