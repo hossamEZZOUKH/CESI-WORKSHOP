@@ -13,9 +13,6 @@ COPY package.json ./
 # Install dependencies, including Vite globally
 RUN pnpm install 
 
-# Copy the rest of your source code
-COPY . .
-
 # Expose the port used by Vite.js, which is 5173 by default
 EXPOSE 5173
 
