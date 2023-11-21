@@ -1,9 +1,6 @@
-FROM golang:1.16 AS build
-
-WORKDIR /compose/hello-docker
-COPY main.go main.go
-RUN CGO_ENABLED=0 go build -o hello main.go
-
-FROM scratch
-COPY --from=build /compose/hello-docker/hello /usr/local/bin/hello
-CMD ["/usr/local/bin/hello"]
+FROM node:18-alpine
+WORKDIR /app
+COPY . .
+RUN yarn install --production
+CMD ["node", "index.js"]
+EXPOSE 3000
