@@ -16,9 +16,7 @@ services:
             - '5173:5173'
         volumes:
             - ./front:/usr/src/app
-            - node_modules:/usr/src/app/node_modules
+            - /usr/src/app/node_modules
+
         environment:
             - NODE_ENV=development
-
-volumes:
-    node_modules:
