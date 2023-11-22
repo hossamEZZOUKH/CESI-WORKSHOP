@@ -1,9 +1,13 @@
-FROM golang:1.16 AS build
+FROM node:16-alpine AS development
+ENV NODE_ENV development
+# Add a work directory
+WORKDIR /app
 
-WORKDIR /compose/hello-docker
-COPY main.go main.go
-RUN CGO_ENABLED=0 go build -o hello main.go
+COPY package.json .
+COPY package-lock.json .
 
-FROM scratch
-COPY --from=build /compose/hello-docker/hello /usr/local/bin/hello
-CMD ["/usr/local/bin/hello"]
+RUN npm install
+# Expose port
+EXPOSE 3002
+# Start the app
+CMD [ "npm", "run", "app"]

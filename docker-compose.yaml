@@ -1,0 +1,10 @@
+services:
+  back:
+    image: dexpress
+    restart: always
+    build: 
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./src:/app/src
