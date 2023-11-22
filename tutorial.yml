@@ -8,7 +8,7 @@ spec:
   - name: 80-tcp
     port: 80
     protocol: TCP
-    targetPort: 80
+    targetPort: 3001
   selector:
     com.docker.project: tutorial
   type: LoadBalancer
@@ -35,11 +35,11 @@ spec:
         com.docker.project: tutorial
     spec:
       containers:
-      - image: docker/getting-started #hellodocker
+      - image: cesi-workshop #hellodocker
         name: tutorial #hello-docker
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 80
+        - containerPort: 3001
           protocol: TCP
         resources: {}
       restartPolicy: Always
